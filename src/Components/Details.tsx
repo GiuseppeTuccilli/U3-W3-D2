@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { Container, Row, Col, Spinner } from "react-bootstrap"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate} from "react-router-dom";
 import { Alert } from "react-bootstrap"
 
 const Details=()=>{
@@ -12,6 +12,7 @@ const[isLoading, setIsLoading]=useState(true)
 const [authors, setAuthors]=useState<Author[]>([])
 const params=useParams()
 console.log(params)
+const navigate=useNavigate()
 
 
 const getDetails=()=>{
@@ -45,6 +46,7 @@ return(
          Scorri in fondo per l'articolo completo
         </p>
         <hr />
+        <Button variant="primary" onClick={()=>{navigate('/')}} >Home</Button>
         <div className="d-flex justify-content-end">
           
         </div>

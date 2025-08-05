@@ -32,6 +32,8 @@ const navigate=useNavigate()
    })
  }
 
+ 
+
  useEffect(()=>{
     getArticels()
  }, [])
