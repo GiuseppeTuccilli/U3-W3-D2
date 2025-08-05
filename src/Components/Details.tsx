@@ -46,7 +46,8 @@ return(
          Scorri in fondo per l'articolo completo
         </p>
         <hr />
-        <Button variant="primary" onClick={()=>{navigate('/')}} >Home</Button>
+        <div className="text-center"><Button variant="primary" onClick={()=>{navigate('/')}} >Home</Button></div>
+        
         <div className="d-flex justify-content-end">
           
         </div>

@@ -1,5 +1,5 @@
 import { useState , useEffect } from "react"
-import { Root , Author, Result, Socials, Launch} from "../types/articles"
+import {  Result  } from "../types/articles"
 import { Container, Row, Col, Spinner } from "react-bootstrap"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -79,6 +79,10 @@ const navigate=useNavigate()
  }, [])
 return(
     <Container>
+         <div className="d-flex justify-content-between my-3">
+         {prev!==null?<Button  className="mt-3 me-3" variant="primary" onClick={()=>{getPrev()}}>Previous</Button>:<div></div>}
+        {next!==null?<Button className="mt-3 ms-3" variant="primary" onClick={()=>{getNext()}}>Next</Button>:<div></div>}
+       </div>
         <Row className="justify-content-center g-2">
        
     {isLoading ? <div className="text-center"><Spinner variant="danger"/></div>:
@@ -106,10 +110,7 @@ return(
     
         
         </Row>
-        <div className="d-flex justify-content-between my-3">
-         {prev!==null?<Button  className="mt-3 me-3" variant="primary" onClick={()=>{getPrev()}}>Previous</Button>:<div></div>}
-        {next!==null?<Button className="mt-3 ms-3" variant="primary" onClick={()=>{getNext()}}>Next</Button>:<div></div>}
-       </div>
+       
         </Container>
 )
 }
