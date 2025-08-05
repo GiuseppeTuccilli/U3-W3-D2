@@ -85,13 +85,11 @@ return(
     articles.map((ar)=>{
         return(
                  <Col xs={12} md={6} lg={4} key={ar.id}>
-              <Card style={{height:'25em'}} className="d-flex flex-column">
+              <Card style={{height:'23em'}} className="d-flex flex-column">
       <Card.Img variant="top" src={ar.image_url} style={{height:'10em', objectFit:'cover'}} />
       <Card.Body className="d-flex flex-column">
         <Card.Title>{ar.title}</Card.Title>
-        <Card.Text>
-          Authors: {ar.authors.join(', ')}
-        </Card.Text>
+        
         <Card.Text className="mb-auto">
           Date: {ar.published_at.slice(0,9)}
         </Card.Text>
@@ -108,7 +106,7 @@ return(
     
         
         </Row>
-        <div className="d-flex justify-content-between m-3">
+        <div className="d-flex justify-content-between my-3">
          {prev!==null?<Button  className="mt-3 me-3" variant="primary" onClick={()=>{getPrev()}}>Previous</Button>:<div></div>}
         {next!==null?<Button className="mt-3 ms-3" variant="primary" onClick={()=>{getNext()}}>Next</Button>:<div></div>}
        </div>
