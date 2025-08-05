@@ -1,9 +1,9 @@
 import { useState , useEffect } from "react"
 import {  Result  } from "../types/articles"
-import { Container, Row, Col, Spinner } from "react-bootstrap"
+import { Container, Row,  Spinner } from "react-bootstrap"
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import { useNavigate } from "react-router-dom";
+
+import SingleArticle from "./SingleArticle";
 
 
 const Home=()=>{
@@ -13,7 +13,7 @@ const [prev, setPrev]=useState<string | null>(null)
 
 const [isLoading, setIsLoading]=useState(true)
 
-const navigate=useNavigate()
+
 
  const getArticels=()=>{
    fetch('https://api.spaceflightnewsapi.net/v4/articles')
@@ -23,7 +23,7 @@ const navigate=useNavigate()
     } else{throw new Error('errore')}
    })
    .then((data)=>{
-    console.log(data)
+    
     setArticles(data.results)
     setNext(data.next)
     setPrev(data.previous)
@@ -43,7 +43,7 @@ const navigate=useNavigate()
     } else{throw new Error('errore')}
    })
    .then((data)=>{
-    console.log(data)
+   
     setArticles(data.results)
     setNext(data.next)
     setPrev(data.previous)
@@ -62,7 +62,7 @@ const navigate=useNavigate()
     } else{throw new Error('errore')}
    })
    .then((data)=>{
-    console.log(data)
+    
     setArticles(data.results)
     setNext(data.next)
     setPrev(data.previous)
@@ -88,30 +88,12 @@ return(
     {isLoading ? <div className="text-center"><Spinner variant="danger"/></div>:
     articles.map((ar)=>{
         return(
-                 <Col xs={12} md={6} lg={4} key={ar.id}>
-              <Card style={{height:'23em'}} className="d-flex flex-column">
-      <Card.Img variant="top" src={ar.image_url} style={{height:'10em', objectFit:'cover'}} />
-      <Card.Body className="d-flex flex-column">
-        <Card.Title>{ar.title}</Card.Title>
-        
-        <Card.Text className="mb-auto">
-          Date: {ar.published_at.slice(0,9)}
-        </Card.Text>
-         
-        <Button variant="primary" onClick={()=>{navigate('details/' + ar.id )}}>Dettagli</Button>
-      </Card.Body>
-    </Card>
-    
-    
-    </Col>
+                <SingleArticle key={ar.id} art={ar}/>
         )
     })
     }
-    
-        
-        </Row>
-       
-        </Container>
+       </Row>
+       </Container>
 )
 }
 

@@ -66,7 +66,7 @@ return(
             {article?.summary}
         </Card.Text>
         <Card.Text>
-         Date: {article?.published_at.slice(0,11)}
+         Date: {article?.published_at.slice(0,10)}
         </Card.Text>
           <Card.Text>
          Authors: {authors.map((a)=>{return(<span key={a.name}>{a.name}</span>)})}
